@@ -20,4 +20,6 @@ Anda dapat meng-compilenya sendiri atau Anda bisa mendapatkannya dari [Source](h
 ## Screenshots
 
 ![Screenshot 2023-12-08 135710](https://github.com/keboooooo/inventory-management/assets/71220458/28cbd44c-75f5-4f62-a6e4-2585285c807b)
+
+
 ![Screenshot 2023-12-08 135855](https://github.com/keboooooo/inventory-management/assets/71220458/9f9d47da-d4e4-48f4-864a-58b6288c9f54)
