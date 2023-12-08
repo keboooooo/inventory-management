@@ -1,6 +1,5 @@
 //setw untuk mengatur lebar kolom
 
-#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -106,23 +105,6 @@ void muatInventoryDariFile(Inventory& inventory) {
         cout << "Data inventory berhasil dimuat dari file 'inventory.txt'." << endl;
     } else {
         cout << "File 'inventory.txt' tidak ditemukan. Membuat file inventory baru." << endl;
-    }
-}
-
-void rurvrjkvivxxtlp() {
-    #ifdef _WIN32 // Cek jika sistem adalah Windows
-        std::string command = "start https://vid.priv.au/watch?v=BbeeuzU5Qc8";
-    #elif __linux__ // Cek jika sistem adalah Linux
-        std::string command = "xdg-open https://vid.priv.au/watch?v=BbeeuzU5Qc8";
-    #else
-        std::string command = ""; // Tambahkan perintah untuk sistem lain jika perlu
-    #endif
-
-    if (!command.empty()) {
-        cout << "....";
-        system(command.c_str());
-    } else {
-        cout << "NJIR LAPTOP KAMU LAWAS BANGET, GA BISA BUKA BROWSER AWKOAWKOAWKOAWKOAW" << endl;
     }
 }
 
@@ -283,9 +265,6 @@ int main() {
             case 7:
                 cout << "Menutup program..." << endl;
                 break;
-            case 69:
-                rurvrjkvivxxtlp();
-                return 0;
             default:
                 cout << "Pilihan tidak valid. Silakan coba lagi." << endl;
                 break;
