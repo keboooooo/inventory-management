@@ -1,9 +1,9 @@
-//setw untuk mengatur lebar kolom
-
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -23,12 +23,17 @@ struct Inventory {
     int count = 0;
 };
 
+// fungsi untuk memberi jeda/sleep pada program
+void newSleep(int milliseconds) {
+    this_thread::sleep_for(chrono::milliseconds(milliseconds));
+}
+
 /* Fungsi untuk menampilkan daftar inventory
    (Memiliki jeda 5 detik di akhir, digunakan pada case 1)) */
 void tampilkanInventory(const Inventory& inventory) {
     if (inventory.count == 0) {
         cout << "Inventory masih kosong." << endl;
-        _sleep (2000);
+        newSleep(2000);
         cout << "\033[2J\033[H"; // clear screen
         return;
     }
@@ -41,7 +46,7 @@ void tampilkanInventory(const Inventory& inventory) {
     }
     cout << "-------------------------------------------------------------" << endl;
     cout << endl;
-    _sleep (5000);
+    newSleep(5000);
 }
 
 /* Fungsi untuk menampilkan daftar inventory
@@ -49,7 +54,7 @@ void tampilkanInventory(const Inventory& inventory) {
 void tampilkanInven(const Inventory& inventory) {
     if (inventory.count == 0) {
         cout << "Inventory masih kosong." << endl;
-        _sleep (2000);
+        newSleep(2000);
         cout << "\033[2J\033[H"; // clear screen
         return;
     }
@@ -71,7 +76,7 @@ void hapusItemBerdasarkanIndex(Inventory& inventory, int itemIndex) {
         }
         inventory.count--;
         cout << "Barang pada indeks " << itemIndex << " berhasil dihapus dari inventory." << endl;
-        _sleep (3000);
+        newSleep(3000);
         cout << "\033[2J\033[H"; // clear screen
     } else {
         cout << "Indeks barang tidak valid." << endl;
@@ -153,11 +158,11 @@ int main() {
                     inventory.items[inventory.count] = barang;
                     inventory.count++;
                     cout << "Barang baru berhasil ditambahkan!" << endl;
-                    _sleep (3000);
+                    newSleep(3000);
                     cout << "\033[2J\033[H"; // clear screen
                 } else {
                     cout << "Inventory sudah penuh. Tidak dapat menambahkan barang baru." << endl;
-                    _sleep (3000);
+                    newSleep(3000);
                     cout << "\033[2J\033[H"; // clear screen
                 }
                 break;
@@ -190,33 +195,33 @@ int main() {
                                     cout << "Masukkan Nama Barang baru: ";
                                     getline(cin, inventory.items[itemIndex].name);
                                     cout << "Nama Barang berhasil diubah.";
-                                    _sleep (3000);
+                                    newSleep(3000);
                                     break;
                                 case 2:
                                     cout << "WARNING!! UNTUK BERAT BARANG JIKA MENGGUNAKAN KOMA HARAP MENGGUNAKAN TITIK!!" << endl;
                                     cout << "Masukkan Jumlah Barang baru: ";
                                     getline(cin, inventory.items[itemIndex].quantity);
                                     cout << "Jumlah Barang berhasil diubah.";
-                                    _sleep (3000);
+                                    newSleep(3000);
                                     break;
                                 case 3:
                                     cout << "Masukkan Kategori Barang baru: ";
                                     getline(cin, inventory.items[itemIndex].category);
                                     cout << "Kategori Barang berhasil diubah.";
-                                    _sleep (3000);
+                                    newSleep(3000);
                                     break;
                                 default:
                                     cout << "Pilihan tidak valid. Tidak ada perubahan yang dilakukan." << endl;
-                                    _sleep (2000);
+                                    newSleep(2000);
                                     break;
                             }
                         } else {
                             cout << endl << "Indeks barang tidak valid." << endl;
-                            _sleep (3000);
+                            newSleep(3000);
                         }
-                    }else{
+                    } else {
                         cout << endl << "Tidak ada perubahan yang dilakukan." << endl;
-                        _sleep (3000);
+                        newSleep(3000);
                     }
                     cout << "\033[2J\033[H"; // clear screen
                 } else {
@@ -235,7 +240,7 @@ int main() {
                     hapusItemBerdasarkanIndex(inventory, itemIndex);
                 } else {
                     cout << "Tidak ada barang dalam inventory yang dapat dihapus." << endl;
-                    _sleep (3000);
+                    newSleep(3000);
                     cout << "\033[2J\033[H"; // clear screen
                 }
                 break;
@@ -248,10 +253,10 @@ int main() {
                 if (option == 'y' || option == 'Y') {
                     inventory.count = 0;
                     cout << "Semua data inventory berhasil dihapus." << endl;
-                    _sleep (3000);
-                }else{
+                    newSleep(3000);
+                } else {
                     cout << "Semua data inventory tidak dihapus." << endl;
-                    _sleep (2000);
+                    newSleep(2000);
                 }
                 cout << "\033[2J\033[H"; // clear screen
                 break;
@@ -259,7 +264,7 @@ int main() {
             case 6:
                 cout << "\033[2J\033[H"; // clear screen
                 simpanInventoryKeFile(inventory);
-                _sleep (3000);
+                newSleep(3000);
                 cout << endl;
                 break;
             case 7:
