@@ -4,6 +4,14 @@
 #include <iomanip>
 #include <chrono>
 #include <thread>
+#include <cstdlib>
+
+// sleep function for Windows and Unix-based systems (Linux, macOS)
+#ifdef _WIN32
+    #include <windows.h>
+#else
+    #include <unistd.h>
+#endif
 
 using namespace std;
 
@@ -23,9 +31,13 @@ struct Inventory {
     int count = 0;
 };
 
-// fungsi untuk memberi jeda/sleep pada program
+// Fungsi untuk membuat sleep
 void newSleep(int milliseconds) {
-    this_thread::sleep_for(chrono::milliseconds(milliseconds));
+#ifdef _WIN32
+    Sleep(milliseconds); // For Windows
+#else
+    usleep(milliseconds * 1000); // For Unix-based systems (Linux, macOS)
+#endif
 }
 
 /* Fungsi untuk menampilkan daftar inventory
